@@ -14,23 +14,19 @@ class SkillsController < ApplicationController
     end
 
     def destroy
-        #@skill.destroy
         Skill.find(params[:id]).destroy
         flash[:success] = "Skill deleated"
         redirect_to request.referrer || root_url
-    end
+        end
 
     private
 
         def skill_params
             params.require(:skill).permit(:name,:user_id)
-<<<<<<< HEAD
-=======
         end
 
         def correct_user
             @skill = current_user.skills.find_by(id: params[:id])
             redirect_to root_url if @skill =nil?
->>>>>>> user-skills
         end
 end
