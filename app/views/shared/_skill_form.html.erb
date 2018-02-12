@@ -1,6 +1,6 @@
 <%= form_for(@skill) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <%= f.text_field :name, class: 'form-control', placeholder: "Add new skill..." %>
-
+    <%= f.hidden_field :user_id, :value => @user.id %>
     <%= f.submit "Add", class: "btn btn-primary" %>
 <% end %>

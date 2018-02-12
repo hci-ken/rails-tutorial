@@ -1,8 +1,8 @@
 class SkillsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
     def create
-        @skill = current_user.skills.build(skill_params)
-        @user = current_user
+        @user = User.find(params[:skill][:user_id])
+        @skill = @user.skills.build(skill_params)
         @skills = @user.skills.paginate(page: params[:page])
         if @skill.save
             flash[:success] = "Skill created!"
@@ -18,6 +18,6 @@ class SkillsController < ApplicationController
     private
 
         def skill_params
-            params.require(:skill).permit(:name)
+            params.require(:skill).permit(:name,:user_id)
         end
 end
