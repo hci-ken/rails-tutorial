@@ -17,7 +17,7 @@ class SkillsController < ApplicationController
         Skill.find(params[:id]).destroy
         flash[:success] = "Skill deleated"
         redirect_to request.referrer || root_url
-        end
+    end
 
     private
 
