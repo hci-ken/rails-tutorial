@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString1
+  created_at: <%= 10.minutes.ago %>
+
+two:
+  name: MyString2
+  created_at: <%= 3.years.ago %>
+
+three:
+  name: MyString3
+  created_at: <%= 2.hours.ago %>
+
+four:
+  name: MyString4
+  created_at: <%= Time.zone.now %>
+  

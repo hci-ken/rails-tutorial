@@ -1,11 +1,21 @@
 <% provide(:title, @user.name) %>
+
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user, size: 50 %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+   <aside class="col-md-4">
+     <section class="user_info">
+       <%= render 'shared/user_info' %>
+     </section>
+     <section class="skill_form">
+       <%= render 'shared/skill_form' %>
+     </section>
+   </aside>
+ <div class="col-md-8">
+    <% if @user.skills.any? %>
+      <h3>Skills (<%= @user.skills.count %>)</h3>
+      <ol class=skills>
+        <%= render @skills %>
+      </ol>
+      <%= will_paginate @skills %>
+    <% end %>
+  </div>
 </div>

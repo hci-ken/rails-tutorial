@@ -1,0 +1,8 @@
+<li id="skill-<%= skill.id %>">
+  <%= link_to gravatar_for(skill.user, size: 50), skill.user %>
+  <span class="user"><%= link_to skill.user.name, skill.user %></span>
+  <span class="name"><%= skill.name %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(skill.created_at) %> ago.
+  </span>
+</li>

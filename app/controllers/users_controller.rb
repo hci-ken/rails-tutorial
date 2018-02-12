@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @skills = @user.skills.paginate(page: params[:page])
+    @skill = current_user.skills.build if logged_in?
   end
 
   def create
@@ -52,15 +54,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
-    end
-
-    # ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
     end
 
     # 正しいユーザーかどうか確認

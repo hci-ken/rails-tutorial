@@ -21,3 +21,9 @@ User.create!(name:  "Example User",
                password:              password,
                password_confirmation: password)
 end
+
+users = User.order(:created_at).take(6)
+50.times do |i|
+  name = "Skill#{i+1}"
+  users.each { |user| user.skills.create!(name: name) }
+end
