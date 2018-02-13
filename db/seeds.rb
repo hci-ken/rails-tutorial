@@ -12,7 +12,7 @@ User.create!(name:  "Example User",
              password_confirmation: "foobar",
              admin: true)
 
-99.times do |n|
+49.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -23,7 +23,7 @@ User.create!(name:  "Example User",
 end
 
 users = User.order(:created_at).take(6)
-50.times do |i|
-  name = "Skill#{i+1}"
+10.times do |i|
+  name = "Skill-#{i+1}"
   users.each { |user| user.skills.create!(name: name) }
 end
