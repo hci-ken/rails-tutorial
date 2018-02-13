@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20180213025739) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "plus", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_plus_on_skill_id"
+    t.index ["user_id", "skill_id"], name: "index_plus_on_user_id_and_skill_id", unique: true
+    t.index ["user_id"], name: "index_plus_on_user_id"
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
