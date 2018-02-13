@@ -1,4 +1,4 @@
-<% if !current_user?(skill.user) %>
+
     <span class="like">
     <% if skill.plus?(current_user) %>
       <%= form_for(skill.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
@@ -17,4 +17,3 @@
       <% end %>
     <% end %>
   </span>
-<% end %>
