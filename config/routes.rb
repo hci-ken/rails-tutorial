@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
+
+  get 'likes/destroy'
+
   root 'static_pages#home'
   get  '/signup',  to: 'users#new'
   get  '/help',    to: 'static_pages#help'
@@ -11,4 +15,5 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   resources :users
   resources :skills, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
 end
