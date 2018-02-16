@@ -21,7 +21,7 @@ class SkillsController < ApplicationController
 
     def show
         @skill = Skill.find(params[:id])
-        @users = User.includes(:skills).where(skills: {name: @skill.name} )
+        @users = User.joins(:skills).includes(:skills).where(skills: {name: @skill.name} ).order("skills.likes_count DESC")
     end
 
     private
@@ -34,4 +34,5 @@ class SkillsController < ApplicationController
             @skill = current_user.skills.find_by(id: params[:id])
             redirect_to root_url if @skill =nil?
         end
+
 end

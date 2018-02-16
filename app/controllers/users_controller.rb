@@ -13,8 +13,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @skills = @user.skills.paginate(page: params[:page])
+    @skills = Skill.where(user_id: params[:id]).order("likes_count DESC").paginate(page: params[:page])
     @skill = current_user.skills.build if logged_in?
+    
   end
 
   def create
@@ -23,7 +24,6 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
-      # 保存の成功をここで扱う。
     else
       render 'new'
     end

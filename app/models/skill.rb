@@ -2,7 +2,7 @@ class Skill < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :plus_users, through: :likes,source: :user
-  default_scope -> { order(created_at: :desc) }
+  #default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :name, presence: true
 
