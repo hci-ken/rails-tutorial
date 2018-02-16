@@ -1,4 +1,9 @@
 <li id="skill-<%= skill.id %>">
   <span class="button"><%= render "likes/like", skill: skill %></span>
-  <span class="name"><%= skill.name %></span>
+  <span class="name"><%= skill.name %>
+  <%= link_to '同じスキルを持つユーザー', skill %>
+    <% if current_user?(skill.user) %>
+      <%= link_to "delete", skill, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
 </li>

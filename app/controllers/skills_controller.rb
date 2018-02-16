@@ -19,6 +19,11 @@ class SkillsController < ApplicationController
         redirect_to request.referrer || root_url
     end
 
+    def show
+        @skill = Skill.find(params[:id])
+        @users = User.includes(:skills).where(skills: {name: @skill.name} )
+    end
+
     private
 
         def skill_params
