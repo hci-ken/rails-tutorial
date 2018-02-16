@@ -13,9 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @skills = Skill.where(user_id: params[:id]).order("likes_count DESC").paginate(page: params[:page])
+    @skills = Skill.eager_load(:plus_users).where(user_id: params[:id]).order("likes_count DESC").paginate(page: params[:page])
     @skill = current_user.skills.build if logged_in?
-    
   end
 
   def create

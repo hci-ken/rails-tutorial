@@ -21,7 +21,7 @@ class SkillsController < ApplicationController
 
     def show
         @skill = Skill.find(params[:id])
-        @users = User.joins(:skills).includes(:skills).where(skills: {name: @skill.name} ).order("skills.likes_count DESC")
+        @users = User.eager_load(:skills).where(skills: {name: @skill.name} ).order("skills.likes_count DESC")
     end
 
     private

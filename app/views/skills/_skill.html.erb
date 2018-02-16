@@ -2,7 +2,7 @@
   <span class="button"><%= render "likes/like", skill: skill %></span>
   <span class="name">
   <%= link_to skill.name, skill %>
-    <% if current_user?(skill.user) %>
+    <% if current_user?(@user) %>
       <%= link_to "delete", skill, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
   </span>
