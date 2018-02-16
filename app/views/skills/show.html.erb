@@ -1,6 +1,5 @@
 <% provide(:title, @skill.name) %>
-<h1>同じスキルが登録されているユーザー</h1>
-
+<h1><%= @skill.name %>を持つユーザー</h1>
 <ul class="users">
     <%= render @users %>
 </ul>
