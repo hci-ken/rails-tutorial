@@ -220,6 +220,17 @@ input {
       float: left;
       margin-top: 0px;
      }
+
+     .user_avatars {
+      overflow: auto;
+      margin-left: 20px;
+      .gravatar {
+        margin: 1px 1px;
+      }
+      a {
+        padding: 0;
+      }
+    }
   }
 }
 
