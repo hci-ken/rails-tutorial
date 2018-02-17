@@ -2,8 +2,9 @@ class LikesController < ApplicationController
   before_action :logged_in_user
   
   def create
-    @user = User.find(params[:like][:user_id])
-    @skill = Skill.find(params[:skill_id]) 
+    @skill = Skill.find(params[:skill_id])
+    #@skill = Like.find(params[:id]).skill 
+    @user = User.find_by(id: @skill.user_id)
     unless @skill.plus?(current_user)
       @skill.plus(current_user)
       redirect_to @user
@@ -11,8 +12,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:like][:user_id])
     @skill = Like.find(params[:id]).skill
+    @user = User.find_by(id: @skill.user_id)
     if @skill.plus?(current_user)
       @skill.minus(current_user)
       redirect_to @user

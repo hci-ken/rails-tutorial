@@ -7,7 +7,6 @@
             <%= button_tag(class: "btn btn-primary btn-sm") do %>
               <%= content_tag :span, "#{skill.likes_count}", class: "" %>
             <% end %>
-            <%= f.hidden_field :user_id, :value => @user.id %>
           <% end %>
         <% else %>
           <%= form_for(skill.likes.build, remote: true) do |f| %>
@@ -15,7 +14,6 @@
             <%= button_tag(class: "btn btn-default btn-sm") do %>
               <%= content_tag :span, "#{skill.likes_count}", class: "" %>
             <% end %>
-            <%= f.hidden_field :user_id, :value => @user.id %>
           <% end %>
         <% end %>
       </span>
