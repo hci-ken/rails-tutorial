@@ -197,34 +197,34 @@ input {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .name {
-    display: block;
-    margin-left: 20px;
-    img {
+
+  
+  
+   .skill-container {
+    display: flex;
+
+    .name {
       display: block;
-      padding: 5px 0;
+      margin-left: 10px;
+      font-size :20px;
+      img {
+        display: block;
+        padding: 5px 0;
+      }
+      .del-button{
+        float: right;
+        margin-left: 10px;
+      }
     }
+
+    .plus-button {
+      float: left;
+      margin-top: 0px;
+     }
   }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
-  .button {
-    float: left;
-    margin-right: 10px;
-    margin-top: 0px;
-   }
 }
+
+
 
 aside {
   textarea {

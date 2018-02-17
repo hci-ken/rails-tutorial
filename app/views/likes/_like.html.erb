@@ -2,7 +2,7 @@
     <span class="like">
     <% if skill.plus?(current_user) %>
       <%= form_for(skill.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
-        <%= button_tag(class: "btn btn-default btn-xs") do %>
+        <%= button_tag(class: "btn btn-primary btn-sm") do %>
           <%= content_tag :span, "#{skill.likes_count}", class: "" %>
         <% end %>
         <%= f.hidden_field :user_id, :value => @user.id %>
@@ -10,7 +10,7 @@
     <% else %>
       <%= form_for(skill.likes.build, remote: true) do |f| %>
         <div><%= hidden_field_tag :skill_id, skill.id %></div>
-        <%= button_tag(class: "btn btn-default btn-xs") do %>
+        <%= button_tag(class: "btn btn-default btn-sm") do %>
           <%= content_tag :span, "#{skill.likes_count}", class: "" %>
         <% end %>
         <%= f.hidden_field :user_id, :value => @user.id %>
