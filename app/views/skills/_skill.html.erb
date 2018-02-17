@@ -21,7 +21,7 @@
     </span>
   </span>
   <span class="name">
-  <%= link_to skill.name, skill %>
+  <%= link_to skill.name, skill ,:style=>"color:black;"%>
     <% if current_user?(@user) %>
       <span class = "del-button">
         | <%= link_to "", skill, method: :delete, data: { confirm: "You sure?" } , class: 'glyphicon glyphicon-trash', :style=>"color:red;" %>

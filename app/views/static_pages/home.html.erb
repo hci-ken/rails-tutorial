@@ -7,8 +7,14 @@
       <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
       sample application.
     </h2>
-
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% if logged_in? %>
+      <%= link_to "My Profile", current_user, class: "btn btn-lg btn-primary" %>
+      <%= link_to "All User", users_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "Log out", logout_path, method: :delete, class: "btn btn-lg btn-primary" %>
+    <% else %>
+      <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "Log in", login_path,  class: "btn btn-lg btn-primary" %>
+    <% end %>
   </div>
 
   <%= link_to image_tag("rails.png", alt: "Rails logo"),

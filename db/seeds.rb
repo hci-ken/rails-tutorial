@@ -26,4 +26,5 @@ users = User.order(:created_at).take(6)
 10.times do |i|
   name = "Skill-#{i+1}"
   users.each { |user| user.skills.create!(name: name) }
+  
 end
