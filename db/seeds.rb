@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#ユーザー
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
              password:              "foobar",
@@ -22,9 +23,23 @@ User.create!(name:  "Example User",
                password_confirmation: password)
 end
 
+#スキル
 users = User.order(:created_at).take(6)
 10.times do |i|
   name = "Skill-#{i+1}"
   users.each { |user| user.skills.create!(name: name) }
   
+end
+
+#＋1
+users = User.order(:created_at).take(6)
+users.each do |user|
+  skills = Skill.where(user_id: user.id)
+  skills.each do |skill|
+    rnd = rand(20) + 1
+    nums = [*(1..rnd)]
+    nums.each do |n|
+      skill.likes.create!(skill_id: skill.id, user_id: n)
+    end
+  end
 end
