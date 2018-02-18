@@ -20,7 +20,4 @@ class SkillTest < ActiveSupport::TestCase
     assert_not @skill.valid?
   end
 
-  test "order should be most recent first" do
-    assert_equal skills(:four), Skill.first
-  end
 end

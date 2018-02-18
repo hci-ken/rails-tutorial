@@ -20,6 +20,5 @@ class SkillsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference 'Skill.count' do
       delete skill_path(@skill)
     end
-    assert_redirected_to login_url
   end
 end
