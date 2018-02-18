@@ -15,28 +15,30 @@
       <ol class=skills>
         <%= render @skills_top %>
       </ol>
-      <% @skills_bottom.each do |s| %>
-        <span class = "skill">
-          <div style="display:inline-flex">
-            <% if s.plus?(current_user) %>
-              <%= link_to "#{s.likes_count}", s.likes.find_by(user_id: current_user.id), method: :delete, class: 'btn btn-primary btn-sm' %>
-            <% else %>
-              <%= form_for(s.likes.build, remote: true) do |f| %>
-                <%= hidden_field_tag :skill_id, s.id %>
-                <%= button_tag(class: "btn btn-default btn-sm") do %>
-                  <%= content_tag :span, "#{s.likes_count}", class: "" %>
+      <% if @user.skills.count > 6 %>
+        <% @skills_bottom.each do |s| %>
+          <span class = "skill">
+            <div style="display:inline-flex">
+              <% if s.plus?(current_user) %>
+                <%= link_to "#{s.likes_count}", s.likes.find_by(user_id: current_user.id), method: :delete, class: 'btn btn-primary btn-sm' %>
+              <% else %>
+                <%= form_for(s.likes.build, remote: true) do |f| %>
+                  <%= hidden_field_tag :skill_id, s.id %>
+                  <%= button_tag(class: "btn btn-default btn-sm") do %>
+                    <%= content_tag :span, "#{s.likes_count}", class: "" %>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-            <span class="name">
-              <%= link_to s.name, s ,:style=>"color:black;"%>
-              <span class = "del-button">
-              <% if current_user?(@user) %>              
-                <%= link_to "", s, method: :delete, data: { confirm: "You sure?" } , class: 'glyphicon glyphicon-trash', :style=>"color:red;" %>
-              <% end %>
-            </span>
-          </div>
-        </span>
+              <span class="name">
+                <%= link_to s.name, s ,:style=>"color:black;"%>
+                <span class = "del-button">
+                <% if current_user?(@user) %>              
+                  <%= link_to "", s, method: :delete, data: { confirm: "You sure?" } , class: 'glyphicon glyphicon-trash', :style=>"color:red;" %>
+                <% end %>
+              </span>
+            </div>
+          </span>
+        <% end %>
       <% end %>
     <% end %>
   </div>
