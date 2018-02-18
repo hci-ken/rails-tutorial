@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @skills = Skill.eager_load(:plus_users, :likes).where(user_id: params[:id]).order({"likes_count DESC"}, :name).paginate(page: params[:page])
+    @skills = Skill.eager_load(:plus_users, :likes).where(user_id: params[:id]).order({likes_count: :DESC}, :name).paginate(page: params[:page])
     if @skills.any?
       @skills_top = @skills.first(6)
       if @skills.size > 6
