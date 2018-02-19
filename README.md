@@ -1,6 +1,7 @@
 # Wantedly プロフィールページの「スキル・特徴」の再現
 
-以下のサイトを参考にし，機能を追加する形で実装しました．
+以下のサイトを参考にし，機能を追加する形で実装しました。
+
 [*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
 [Michael Hartl](http://www.michaelhartl.com/) 著
 
